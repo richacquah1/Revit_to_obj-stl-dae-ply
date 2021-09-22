@@ -1,0 +1,915 @@
+{
+  "Uuid": "1a503775-0fbc-43aa-8c12-d3cf10c5cc96",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Export to OBJ",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [
+    {
+      "Id": "d4e1bb5e23974893ba15349638518658",
+      "Name": "Dropdown List Selector",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Use this node to select multiple items from a list."
+    },
+    {
+      "Id": "dd1d3575fe0f42a6a7cc5bbc871b776d",
+      "Name": "Dropdown List Selector",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Use this node to select multiple items from a list."
+    },
+    {
+      "Id": "0b0da58b347947dfa74991cac2cff36b",
+      "Name": "Dropdown List Selector",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Use this node to select multiple items from a list."
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Solids",
+      "Id": "790868f579dd4661bc73af03b4b3e891",
+      "Inputs": [
+        {
+          "Id": "baf925cc918f451e89d84e6dee78bfd3",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "18cd6f82a54547389454b1d5d5db3579",
+          "Name": "Solid[]",
+          "Description": "Solid[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Solids in this Element\n\nElement.Solids: Solid[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "e97c1c446d8744aea3244f00fc259657",
+      "Inputs": [
+        {
+          "Id": "191d648b19d641e6b18ea5b6f05723ce",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "935086193345492882ed240926cfd6f7",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1a16bcc27fe14e1ab5fe8f57734f68c4",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByUnion@Autodesk.DesignScript.Geometry.Solid[]",
+      "Id": "b4e56e439d8449d1be2e5cf449572a79",
+      "Inputs": [
+        {
+          "Id": "218effe9796a4490b9a9f64fde4a2e96",
+          "Name": "solids",
+          "Description": "A collection of solids\n\nSolid[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0cb2625d30484d44920fe49ed76c2af7",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Union a collection of solids into one solid\n\nSolid.ByUnion (solids: Solid[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.ExportMeshes@string,Autodesk.Dynamo.MeshToolkit.Mesh[]",
+      "Id": "8c393392b161499686632b7991f9e385",
+      "Inputs": [
+        {
+          "Id": "f3596d76671145fc91d70bd7655d7fa0",
+          "Name": "filename",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e4cf161a7b0c4ed9ab8fa4504a68cf3a",
+          "Name": "meshes",
+          "Description": "Mesh[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d49bbaf36d514993bd09bd6c5bc77381",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Exports meshes to a format determined by file name: .mix -- Meshmixer .obj -- Wavefront .stl -- STL format .dae -- COLLADA .ply -- Polygon File Format This function returns the filename of the output file, which may need to be changed if it contains non-ascii characters\n\nMesh.ExportMeshes (filename: string, meshes: Mesh[]): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.ByGeometry@Autodesk.DesignScript.Geometry.Geometry,double,int",
+      "Id": "2f6e190f94ab42afa89a996cfe1d0623",
+      "Inputs": [
+        {
+          "Id": "61b854087db84a269ba5216d119b09ed",
+          "Name": "inputGeometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2dd4ef323c9144e8abccab42a743fbca",
+          "Name": "tolerance",
+          "Description": "double\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ff663c9b1b814b928d199e6ec5fab499",
+          "Name": "maxGridLines",
+          "Description": "int\nDefault value : 512",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "583d1e4cb0864ed08fbeebc3c9f74f03",
+          "Name": "Mesh",
+          "Description": "Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Convert a Geometry object such as a Solid or Surface into a Mesh. The resolution of the mesh is determined by the Dynamo render precision\n\nMesh.ByGeometry (inputGeometry: Geometry, tolerance: double = -1, maxGridLines: int = 512): Mesh"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\".stl\";\n\".obj\";\n\".dae\";\n\".ply\";",
+      "Id": "737d258a306440da97795b24aa1955a6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b831b66b2e434292beaee022f7a5aba3",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5cdd492cca214a3d86ff4f7ed51c2ef3",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "39a59fd4593b471899c6e3fa64a3cf7c",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2574c075d985489e832ccec59021855b",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "+@var[]..[],var[]..[]",
+      "Id": "9edc9b737deb471885e2b81af0c6cd10",
+      "Inputs": [
+        {
+          "Id": "abd2a13095bd4b719981c58678726864",
+          "Name": "x",
+          "Description": "x value.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a23a4c96ec374faba61556b8b010f6ad",
+          "Name": "y",
+          "Description": "y value.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6e9c765bf83f4e77b991840e3612a0c4",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adds x to y.\n\n+ (x: var[]..[], y: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\Richard\\Documents\\export_.stl",
+      "InputValue": "..\\..\\..\\..\\Documents\\export_.stl",
+      "NodeType": "ExtensionNode",
+      "Id": "43680938bdbc46f887a723d38ee8e55b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8421689ca1a34459a8d86dab703ae0d3",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.FileName@string,bool",
+      "Id": "ea7eda5950a044698f2ab3d3160eb7e6",
+      "Inputs": [
+        {
+          "Id": "15276e5a170049d3ae28a8f92154cd75",
+          "Name": "path",
+          "Description": "Path to get the file name of.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2748ddc581e4450fab11510c6403d08d",
+          "Name": "withExtension",
+          "Description": "Determines whether or not the extension is included in the result, defaults to true.\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eef69d9184f84b65929600cb880d51b2",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the file name of a file path.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "d7efb86bb39a4678bad3a14a4004a5f3",
+      "Inputs": [
+        {
+          "Id": "edf5be2360704e35811c2a85bb5bb0cb",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9f41d6770fed43b7bbc85a1db07321ac",
+          "Name": "item1",
+          "Description": "Item Index #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "131270ff5ca84f7482939fd45e08b4b6",
+          "Name": "item2",
+          "Description": "Item Index #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "737c66db7a8e4ad58090371a0c545e2e",
+          "Name": "item3",
+          "Description": "Item Index #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9fad764f79f442a4baf66bf75a289e6a",
+          "Name": "list",
+          "Description": "A list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    },
+    {
+      "ConcreteType": "archilabUI.DropdownListSelector.DropdownListSelector, archilabUI2021",
+      "ItemsCollection": [
+        {
+          "Name": ".stl",
+          "Index": 0,
+          "IsSelected": true
+        },
+        {
+          "Name": ".obj",
+          "Index": 1,
+          "IsSelected": false
+        },
+        {
+          "Name": ".dae",
+          "Index": 2,
+          "IsSelected": false
+        },
+        {
+          "Name": ".ply",
+          "Index": 3,
+          "IsSelected": false
+        }
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "d4e1bb5e23974893ba15349638518658",
+      "Inputs": [
+        {
+          "Id": "288d7036cd13468abe699ee296b70fe2",
+          "Name": "List",
+          "Description": "Input List.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1b4841254c424013b2eb6aad17e494e3",
+          "Name": "List",
+          "Description": "Selected Items.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Use this node to select multiple items from a list."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsInView, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "6ff2f46342404353a7e6485284ed8526",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bfaef505ecc74d5bb7b8096a22f6157e",
+          "Name": "elements",
+          "Description": "All visible elements in the active view.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get all the elements which are visible in the active view."
+    },
+    {
+      "ConcreteType": "archilabUI.DropdownListSelector.DropdownListSelector, archilabUI2021",
+      "ItemsCollection": [
+        {
+          "Name": "Wall",
+          "Index": 0,
+          "IsSelected": true
+        },
+        {
+          "Name": "Wall",
+          "Index": 1,
+          "IsSelected": true
+        },
+        {
+          "Name": "Wall",
+          "Index": 2,
+          "IsSelected": true
+        },
+        {
+          "Name": "Wall",
+          "Index": 3,
+          "IsSelected": true
+        },
+        {
+          "Name": "0915 x 2134mm",
+          "Index": 4,
+          "IsSelected": false
+        },
+        {
+          "Name": "FootPrintRoof",
+          "Index": 5,
+          "IsSelected": true
+        },
+        {
+          "Name": "Floor",
+          "Index": 6,
+          "IsSelected": false
+        },
+        {
+          "Name": "2500x 1500mm",
+          "Index": 7,
+          "IsSelected": false
+        },
+        {
+          "Name": "2500x 1500mm",
+          "Index": 8,
+          "IsSelected": false
+        }
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "dd1d3575fe0f42a6a7cc5bbc871b776d",
+      "Inputs": [
+        {
+          "Id": "58eba487c7bb4afc917da199e957a28f",
+          "Name": "List",
+          "Description": "Input List.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b7f02bbfd3de4dd998132717b127276e",
+          "Name": "List",
+          "Description": "Selected Items.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Use this node to select multiple items from a list."
+    },
+    {
+      "ConcreteType": "GenerativeDesign.DSModelDragWallSelection, GenerativeDesign.Dynamo.Nodes.Revit",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "a68fb0f2-74ed-4cf4-93cb-2aea4bb1fb3d-00048864",
+        "a68fb0f2-74ed-4cf4-93cb-2aea4bb1fb3d-00048865",
+        "a68fb0f2-74ed-4cf4-93cb-2aea4bb1fb3d-00048866",
+        "a68fb0f2-74ed-4cf4-93cb-2aea4bb1fb3d-00048867"
+      ],
+      "Id": "b6d0d934012142a28724d37b3ce1afd1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "41cb9e45aef9490eb547f2a3fed9d3d0",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "archilabUI.DropdownListSelector.DropdownListSelector, archilabUI2021",
+      "ItemsCollection": [],
+      "NodeType": "ExtensionNode",
+      "Id": "0b0da58b347947dfa74991cac2cff36b",
+      "Inputs": [
+        {
+          "Id": "0acaee22f8604bcbae4518484925638b",
+          "Name": "List",
+          "Description": "Input List.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f6eec13125004d3799ba7b70cf6d536c",
+          "Name": "List",
+          "Description": "Selected Items.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Use this node to select multiple items from a list."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "18cd6f82a54547389454b1d5d5db3579",
+      "End": "191d648b19d641e6b18ea5b6f05723ce",
+      "Id": "f3402e09261b4519950fd8eedc7180ed"
+    },
+    {
+      "Start": "1a16bcc27fe14e1ab5fe8f57734f68c4",
+      "End": "218effe9796a4490b9a9f64fde4a2e96",
+      "Id": "8a88dfe8ad9c42289ec246c3c7d8805a"
+    },
+    {
+      "Start": "0cb2625d30484d44920fe49ed76c2af7",
+      "End": "61b854087db84a269ba5216d119b09ed",
+      "Id": "1206e2dce6b648a69b98cbcdbceb52f4"
+    },
+    {
+      "Start": "583d1e4cb0864ed08fbeebc3c9f74f03",
+      "End": "e4cf161a7b0c4ed9ab8fa4504a68cf3a",
+      "Id": "9fe0d80ddb394ac8883bd1ac1ebbd664"
+    },
+    {
+      "Start": "b831b66b2e434292beaee022f7a5aba3",
+      "End": "edf5be2360704e35811c2a85bb5bb0cb",
+      "Id": "d8661a1cea564455be5f973e3ee366d2"
+    },
+    {
+      "Start": "5cdd492cca214a3d86ff4f7ed51c2ef3",
+      "End": "9f41d6770fed43b7bbc85a1db07321ac",
+      "Id": "e933ba981e8b451684b119a1ddb9524c"
+    },
+    {
+      "Start": "39a59fd4593b471899c6e3fa64a3cf7c",
+      "End": "131270ff5ca84f7482939fd45e08b4b6",
+      "Id": "7d9a18dab2cb47e0818acca4f66371a0"
+    },
+    {
+      "Start": "2574c075d985489e832ccec59021855b",
+      "End": "737c66db7a8e4ad58090371a0c545e2e",
+      "Id": "31dad967117c41ac92b52fca320d184c"
+    },
+    {
+      "Start": "6e9c765bf83f4e77b991840e3612a0c4",
+      "End": "15276e5a170049d3ae28a8f92154cd75",
+      "Id": "c1f296fcfaca49619abb8e5f6843c3fb"
+    },
+    {
+      "Start": "8421689ca1a34459a8d86dab703ae0d3",
+      "End": "abd2a13095bd4b719981c58678726864",
+      "Id": "03400ffcecc044be8177d585ae12f6e9"
+    },
+    {
+      "Start": "eef69d9184f84b65929600cb880d51b2",
+      "End": "f3596d76671145fc91d70bd7655d7fa0",
+      "Id": "d6712f0341464ecf93729290a11afae3"
+    },
+    {
+      "Start": "9fad764f79f442a4baf66bf75a289e6a",
+      "End": "288d7036cd13468abe699ee296b70fe2",
+      "Id": "d2e1be16add14e44ab870246966c4a4c"
+    },
+    {
+      "Start": "1b4841254c424013b2eb6aad17e494e3",
+      "End": "a23a4c96ec374faba61556b8b010f6ad",
+      "Id": "2a6d130eade24865b95352757f132bcb"
+    },
+    {
+      "Start": "1b4841254c424013b2eb6aad17e494e3",
+      "End": "2748ddc581e4450fab11510c6403d08d",
+      "Id": "de491ead93554ef19402f8d087c66b5c"
+    },
+    {
+      "Start": "bfaef505ecc74d5bb7b8096a22f6157e",
+      "End": "58eba487c7bb4afc917da199e957a28f",
+      "Id": "d9a4caa7c17b45f8a3e3c83a46c66dd6"
+    },
+    {
+      "Start": "b7f02bbfd3de4dd998132717b127276e",
+      "End": "baf925cc918f451e89d84e6dee78bfd3",
+      "Id": "ec03fb80468148db8da2772dcd8512e9"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MeshToolkit",
+      "Version": "3.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "8c393392b161499686632b7991f9e385",
+        "2f6e190f94ab42afa89a996cfe1d0623"
+      ]
+    },
+    {
+      "Name": "archi-lab.net",
+      "Version": "2021.25.21",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d4e1bb5e23974893ba15349638518658",
+        "dd1d3575fe0f42a6a7cc5bbc871b776d",
+        "0b0da58b347947dfa74991cac2cff36b"
+      ]
+    },
+    {
+      "Name": "GenerativeDesign.Revit",
+      "Version": "1.3.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "b6d0d934012142a28724d37b3ce1afd1"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.1.8786",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -845.18981582703486,
+      "EyeY": 921.20563381262184,
+      "EyeZ": 4052.9174431640004,
+      "LookX": 840.18981582703486,
+      "LookY": -910.20563381262184,
+      "LookZ": -4060.9174431640004,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": false,
+        "Name": "Element.Solids",
+        "Id": "790868f579dd4661bc73af03b4b3e891",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 299.4305341593481,
+        "Y": 439.03343564884528
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "List.Flatten",
+        "Id": "e97c1c446d8744aea3244f00fc259657",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 526.66816225516027,
+        "Y": 454.88722365553014
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Solid.ByUnion",
+        "Id": "b4e56e439d8449d1be2e5cf449572a79",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 736.99508314384127,
+        "Y": 459.11490045731256
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.ExportMeshes",
+        "Id": "8c393392b161499686632b7991f9e385",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1235.0702307727045,
+        "Y": 323.18057827043395
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Mesh.ByGeometry",
+        "Id": "2f6e190f94ab42afa89a996cfe1d0623",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 952.81687630119609,
+        "Y": 431.10835593359326
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "737d258a306440da97795b24aa1955a6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -154.91403942738452,
+        "Y": 263.08648221381884
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "+",
+        "Id": "9edc9b737deb471885e2b81af0c6cd10",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 638.1271162324864,
+        "Y": 169.223736420643
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "43680938bdbc46f887a723d38ee8e55b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 395.85600519007335,
+        "Y": 118.99093012861078
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "FileSystem.FileName",
+        "Id": "ea7eda5950a044698f2ab3d3160eb7e6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 882.04426956427824,
+        "Y": 207.31848716219446
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "d7efb86bb39a4678bad3a14a4004a5f3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 73.149799888301118,
+        "Y": 256.90588760210107
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Dropdown List Selector",
+        "Id": "d4e1bb5e23974893ba15349638518658",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 251.35452021921571,
+        "Y": 275.50116276706615
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements In Active View",
+        "Id": "6ff2f46342404353a7e6485284ed8526",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -188.32623728358152,
+        "Y": 431.43592280093537
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Dropdown List Selector",
+        "Id": "dd1d3575fe0f42a6a7cc5bbc871b776d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 13.202370409033733,
+        "Y": 429.43765152164775
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Drag Select Wall Elements",
+        "Id": "b6d0d934012142a28724d37b3ce1afd1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -218.00457623206881,
+        "Y": 537.42167774134452
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Dropdown List Selector",
+        "Id": "0b0da58b347947dfa74991cac2cff36b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 94.458392329201729,
+        "Y": 550.57033134314372
+      }
+    ],
+    "Annotations": [],
+    "X": 108.89730059450773,
+    "Y": 79.760150226182816,
+    "Zoom": 0.52642501561621358
+  }
+}
